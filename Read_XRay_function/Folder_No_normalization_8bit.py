@@ -3,7 +3,7 @@ import pydicom
 from pydicom.pixel_data_handlers.util import apply_voi_lut
 import cv2
 import os
-yourPath = 'C:/Hospital_Project/Image_preprocessing/images/DICOM/'
+yourPath = './DICOM/'
 def read_xray(path, voi_lut = True, fix_monochrome = True):
     input_dicom = pydicom.read_file(path)
     print(input_dicom.pixel_array.shape)
