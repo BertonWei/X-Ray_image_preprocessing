@@ -9,9 +9,9 @@ from PIL import Image
 import cv2
 import os
 #mark folder
-markPath = './mark_image/'
+markPath = 'C:/Users/EN308/Desktop/chuanyi/unet-master-master/data/membrane/train/label/'
 #Original image folder
-OriginalPath = './prediction_image/'
+OriginalPath = 'C:/Users/EN308/Desktop/BertonWei/X-Ray_image_preprocessing-main/Mask_add/add/'
 #mask
 segmentation = cv2.imread('path',0)
 #Original image
@@ -20,10 +20,10 @@ for file in allFileList:
   if os.path.isdir(os.path.join(markPath,file)):
     print("I'm a directory: " + file)
   elif os.path.isfile(markPath+file):
-    print(markPath+file)
+    print(OriginalPath+file)
 
-    image = cv2.imread(markPath+file)
-    mask = cv2.imread(OriginalPath+file,cv2.IMREAD_GRAYSCALE)
+    image = cv2.imread(OriginalPath+file[:-4]+'.png')
+    mask = cv2.imread(markPath+file,cv2.IMREAD_GRAYSCALE)
     ret, mask = cv2.threshold(mask, 128, 255, cv2.THRESH_BINARY)
     redImg = np.zeros(image.shape, image.dtype)
     redImg[:,:] = (0, 0, 255)
